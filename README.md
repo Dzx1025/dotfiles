@@ -17,3 +17,15 @@ cd dotfiles
 ```shell
 stow neovim
 ```
+
+### Zsh
+
+```shell
+stow zsh
+```
+
+### Tmux
+
+```shell
+stow tmux
+```
