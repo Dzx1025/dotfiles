@@ -50,8 +50,8 @@ setopt hist_verify
 # completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza $realpath'
 
 # aliases
 alias c="clear"
