@@ -5,6 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# PATH
+# Openjdk
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
 # zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -50,21 +55,20 @@ setopt hist_verify
 # completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --icons -a --group-directories-first --git --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --icons -a --group-directories-first --git --color=always $realpath'
 
 # aliases
 alias c="clear"
 alias cat="bat"
-alias l="eza --icons"
-alias ls="eza --icons"
-alias la="eza -a --icons"
-alias ll="eza -al"
-alias cd="z"
+alias l="eza --iconss --git"
+alias ls="eza --icons --git"
+alias la="eza -a --icons --git"
+alias ll="eza -al --git"
 
 # Shell integration
 eval "$(fzf --zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd=cd zsh)"
 
 # OK to perform console I/O before this point.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
