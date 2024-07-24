@@ -61,7 +61,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -1 --icons -a --group-di
 # aliases
 alias c="clear"
 alias cat="bat"
-alias l="eza --iconss --git"
+alias l="eza --icons --git"
 alias ls="eza --icons --git"
 alias la="eza -a --icons --git"
 alias ll="eza -al --git"
