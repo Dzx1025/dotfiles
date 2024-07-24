@@ -4,7 +4,7 @@ I use stow to manage and sync my dotfiles.
 
 ## Installation
 
-```shell
+```bash
 brew install stow
 
 git clone https://github.com/Dzx1025/dotfiles.git
@@ -14,18 +14,20 @@ cd dotfiles
 
 ### Neovim
 
-```shell
+```bash
 stow neovim
 ```
 
 ### Zsh
 
-```shell
+```bash
 stow zsh
 ```
 
 ### Tmux
 
-```shell
+```bash
+# install TPM
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 stow tmux
 ```
