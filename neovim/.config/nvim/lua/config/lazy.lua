@@ -23,6 +23,7 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
+    { import = "lazyvim.plugins.extras.ui.edgy" },
 
     { import = "lazyvim.plugins.extras.editor.telescope" },
 
