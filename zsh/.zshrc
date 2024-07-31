@@ -52,7 +52,17 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt hist_verify
 
+# Set FZF color scheme based on system theme
+export FZF_DEFAULT_OPTS="$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo '
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+' || echo '
+  --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39
+  --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78
+  --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39
 ')"
+
 # completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
@@ -61,7 +71,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --icons -a --group-d
 
 # aliases
 alias c="clear"
-alias cat="bat"
+alias cat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)"
 alias l="eza --icons --git"
 alias ls="eza --icons --git"
 alias la="eza -a --icons --git"
