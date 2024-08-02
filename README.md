@@ -22,7 +22,7 @@ stow neovim
 
 ### Zsh
 
-To use powerlevel10k theme, I set my terminal font as the MesloLGS Nerd Font.
+To use powerlevel10k theme, I set my terminal font as the MesloLGS Nerd Font Mono.
 
 ```bash
 stow zsh
