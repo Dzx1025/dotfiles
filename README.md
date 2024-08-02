@@ -4,6 +4,8 @@ I use stow to manage and sync my dotfiles.
 
 ## Installation
 
+You may need to backup your original dotfiles before the installation.
+
 ```bash
 brew install stow
 
@@ -20,7 +22,7 @@ stow neovim
 
 ### Zsh
 
-To use powerlevel10k theme, I set my terminal font as the Meslo Nerd Font Mono.
+To use powerlevel10k theme, I set my terminal font as the MesloLGS Nerd Font.
 
 ```bash
 stow zsh
