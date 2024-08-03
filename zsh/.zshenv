@@ -1,8 +1,8 @@
 
 . "$HOME/.cargo/env"
 # Openjdk
-export PATH=/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Users/zeke/.local/share/zinit/polaris/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/zeke/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/Users/zeke/Library/Application Support/JetBrains/Toolbox/scripts:/Users/zeke/Library/Application Support/JetBrains/Toolbox/scripts
-export CPPFLAGS=-I/opt/homebrew/opt/openjdk/include
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 # Set FZF color scheme based on system theme
 export FZF_DEFAULT_OPTS="$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo '
