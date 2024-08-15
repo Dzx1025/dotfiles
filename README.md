@@ -12,6 +12,7 @@ git clone https://github.com/Dzx1025/dotfiles.git
 # Run stow commands at the git root dir
 cd dotfiles
 ```
+
 ## Usage
 
 ### Neovim
