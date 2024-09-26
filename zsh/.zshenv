@@ -4,6 +4,7 @@
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
+export HOMEBREW_AUTO_UPDATE_SECS="86400"
 # Set FZF color scheme based on system theme
 # if defaults read -globalDomain AppleInterfaceStyle &> /dev/null; then
 #     # Dark mode
