@@ -60,6 +60,26 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons -a --group-directories-first --git --color=always $realpath'
+# custom fzf flags
+if defaults read -globalDomain AppleInterfaceStyle &> /dev/null; then
+    # Dark mode
+    zstyle ':fzf-tab:*' fzf-flags \
+    --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+    --color=selected-bg:#45475a \
+    --multi \
+    --height=80% --layout=reverse --info=inline --margin=1 --padding=1 --ansi --preview-window=right:50% --pointer '❯'
+else
+    # Light mode
+    zstyle ':fzf-tab:*' fzf-flags \
+    --color=bg+:#ccd0da,spinner:#dc8a78,hl:#d20f39 \
+    --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+    --color=marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39 \
+    --color=selected-bg:#bcc0cc \
+    --multi \
+    --height=80% --layout=reverse --info=inline --margin=1 --padding=1 --ansi --preview-window=right:50% --pointer '❯'
+fi
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
