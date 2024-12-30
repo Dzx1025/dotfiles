@@ -2,7 +2,7 @@ return {
   { "rebelot/kanagawa.nvim" },
   { "ellisonleao/gruvbox.nvim" },
   {
-    "catppuccin/nvim",
+    "catppuccin",
     flavour = "auto", -- latte, frappe, macchiato, mocha
     background = { -- :h background
       light = "latte",
