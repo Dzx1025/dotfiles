@@ -12,3 +12,8 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/zeke/.lmstudio/bin"
+# End of LM Studio CLI section
+

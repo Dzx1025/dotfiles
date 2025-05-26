@@ -14,8 +14,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Powerlevel10k
 zinit ice depth=1; zinit light romkatv/Powerlevel10k
 # Zsh Plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 # Snippets
@@ -27,7 +27,6 @@ fpath=(/Users/zeke/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
-# autoload -U compinit && compinit
 
 zinit cdreplay -q
 
@@ -100,11 +99,4 @@ alias ll="eza -al --git"
 # Shell integration
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd=cd zsh)"
-
-# OK to perform console I/O before this point.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# From this point on, until zsh is fully initialized, console input won't work and
-# console output may appear uncolored.
 
