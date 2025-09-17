@@ -100,3 +100,8 @@ alias ll="eza -al --git"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd=cd zsh)"
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/zeke/.lmstudio/bin"
+# End of LM Studio CLI section
+
