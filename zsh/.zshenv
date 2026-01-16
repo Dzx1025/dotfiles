@@ -18,3 +18,6 @@ esac
 export PATH="$PATH:/Users/zeke/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Added for Claude Code LSP
+export ENABLE_LSP_TOOL=1
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"

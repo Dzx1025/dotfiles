@@ -105,3 +105,7 @@ eval "$(zoxide init --cmd=cd zsh)"
 export PATH="$PATH:/Users/zeke/.lmstudio/bin"
 # End of LM Studio CLI section
 
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by Antigravity
+export PATH="/Users/zeke/.antigravity/antigravity/bin:$PATH"
