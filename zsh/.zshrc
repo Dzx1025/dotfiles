@@ -25,7 +25,12 @@ zinit light Aloxaf/fzf-tab
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/zeke/.docker/completions $fpath)
 autoload -Uz compinit
-compinit
+# 每天只检查一次补全文件
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 # End of Docker CLI completions
 
 zinit cdreplay -q
@@ -40,8 +45,8 @@ bindkey '^[[B' history-search-forward
 
 # history setup
 HISTFILE=$HOME/.zsh_history
-SAVEHIST=1000
-HISTSIZE=999
+HISTSIZE=10000
+SAVEHIST=10000
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
@@ -100,12 +105,8 @@ alias ll="eza -al --git"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd=cd zsh)"
 
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/zeke/.lmstudio/bin"
 # End of LM Studio CLI section
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
-# Added by Antigravity
-export PATH="/Users/zeke/.antigravity/antigravity/bin:$PATH"
