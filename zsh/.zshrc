@@ -100,6 +100,7 @@ alias l="eza --icons --git"
 alias ls="eza --icons --git"
 alias la="eza -a --icons --git"
 alias ll="eza -al --git"
+alias awslocal="aws --endpoint-url=http://localhost:4566"
 
 # Shell integration
 eval "$(fzf --zsh)"
