@@ -7,20 +7,16 @@ fi
 
 # zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+[[ ! -d "$ZINIT_HOME" ]] && mkdir -p "${ZINIT_HOME:h}"
+[[ ! -d "$ZINIT_HOME/.git" ]] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
-# Add Plugins
-# Powerlevel10k
+
+# Prompt
 zinit ice depth=1; zinit light romkatv/Powerlevel10k
-# Zsh Plugins
+
+# Completions must be available before compinit.
+zinit ice blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-# Snippets
-# zinit snippet OMZP::git
-# Load completions
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/zeke/.docker/completions $fpath)
@@ -34,6 +30,15 @@ fi
 # End of Docker CLI completions
 
 zinit cdreplay -q
+
+# fzf-tab must load after compinit and before plugins that wrap widgets.
+zinit light Aloxaf/fzf-tab
+
+# These can load after the first prompt.
+zinit ice wait lucid atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+zinit ice wait lucid
+zinit light zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -105,8 +110,6 @@ alias awslocal="aws --endpoint-url=http://localhost:4566"
 # Shell integration
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd=cd zsh)"
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/zeke/.lmstudio/bin"
