@@ -10,8 +10,8 @@ path=(
 # Load heavyweight version managers on first use.
 load_nvm() {
   unset -f nvm node npm npx pnpm yarn corepack load_nvm
-  [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]] && . "/opt/homebrew/opt/nvm/nvm.sh"
-  [[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ]] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
+  [[ -s "$NVM_DIR/bash_completion" ]] && . "$NVM_DIR/bash_completion"
 }
 
 nvm() { load_nvm; nvm "$@"; }
