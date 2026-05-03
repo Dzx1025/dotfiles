@@ -19,7 +19,7 @@ zinit ice blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/zeke/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit
 # 每天只检查一次补全文件
 if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
@@ -76,8 +76,15 @@ zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
 # [Remove] this line if eza is not installed
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons -a --group-directories-first --git --color=always $realpath'
+# Cross-platform dark mode detection
+is-dark-mode() {
+  [[ "$(uname)" == "Darwin" ]] && defaults read -globalDomain AppleInterfaceStyle &> /dev/null && return 0
+  [[ "$(uname)" == "Linux" ]] && gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null | grep -q dark && return 0
+  [[ "${COLORFGBG:-}" == *dark* ]] && return 0
+  return 1
+}
 # custom fzf flags
-if defaults read -globalDomain AppleInterfaceStyle &> /dev/null; then
+if is-dark-mode; then
     # Dark mode
     zstyle ':fzf-tab:*' fzf-flags \
     --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
@@ -115,5 +122,5 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd=cd zsh)"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/zeke/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
