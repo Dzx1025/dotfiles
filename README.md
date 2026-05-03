@@ -5,6 +5,8 @@
 You may need to backup your original dotfiles before the installation.
 
 ```bash
+# Install Homebrew first (if not already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # Using stow to sync dotfiles
 brew install stow
 # Clone
@@ -38,10 +40,12 @@ Will be installed automatically:
 
 Need to install manually:
 
+- nvm (Node.js version manager)
 - eza
 - fzf
 - bat
 - zoxide
+- MesloLGS Nerd Font Mono (required for Powerlevel10k prompt rendering)
 
 ### Tmux
 

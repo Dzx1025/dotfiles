@@ -74,6 +74,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
+# [Remove] this line if eza is not installed
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons -a --group-directories-first --git --color=always $realpath'
 # custom fzf flags
 if defaults read -globalDomain AppleInterfaceStyle &> /dev/null; then
@@ -100,7 +101,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # aliases
 alias c="clear"
-alias cat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)"
+# [Comment] out the lines below if eza is not installed
 alias l="eza --icons --git"
 alias ls="eza --icons --git"
 alias la="eza -a --icons --git"
@@ -108,7 +109,9 @@ alias ll="eza -al --git"
 alias awslocal="aws --endpoint-url=http://localhost:4566"
 
 # Shell integration
+# [Comment] out the line below if fzf is not installed
 eval "$(fzf --zsh)"
+# [Comment] out the line below if zoxide is not installed
 eval "$(zoxide init --cmd=cd zsh)"
 
 # Added by LM Studio CLI (lms)
