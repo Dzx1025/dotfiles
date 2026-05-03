@@ -22,19 +22,6 @@ pnpm() { load_nvm; pnpm "$@"; }
 yarn() { load_nvm; yarn "$@"; }
 corepack() { load_nvm; corepack "$@"; }
 
-# Conda command shim, without loading the shell hook until needed.
-if [[ -d "/opt/homebrew/Caskroom/miniconda/base/condabin" ]]; then
-  path=("/opt/homebrew/Caskroom/miniconda/base/condabin" $path)
-fi
-
-load_conda() {
-  unset -f conda load_conda
-  local conda_exe="/opt/homebrew/bin/conda"
-  [[ -x "$conda_exe" ]] && eval "$("$conda_exe" shell.zsh hook 2>/dev/null)"
-}
-
-conda() { load_conda; conda "$@"; }
-
 # Added by Toolbox App
 path=(
   $path
